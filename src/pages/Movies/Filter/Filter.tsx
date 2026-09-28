@@ -1,10 +1,12 @@
-import { type ReactNode } from "react";
 import "./Filter.css";
+import { useMemo, type ReactNode } from "react";
 import MoviesFilterSelect from "./FilterSelect/FilterSelect";
 import { RATING_OPTIONS, SORT_OPTIONS, YEARS_OPTIONS } from "./filters";
+import useGenres from "../hooks/useGenres";
 
 interface MoviesFilterProps {
   children: ReactNode;
+  canSeeFilters: boolean;
   year: number;
   rating: number;
   sort: string;
@@ -18,6 +20,7 @@ interface MoviesFilterProps {
 export default function MoviesFilter(
   {
     children, 
+    canSeeFilters,
     onRatingChange, 
     onSortChange, 
     onYearChange, 
@@ -28,6 +31,21 @@ export default function MoviesFilter(
     sort,
   }: MoviesFilterProps,
 ) {
+  const {data} = useGenres();
+  const genreOptions = useMemo(() => 
+    data?.genres?.map(value => ({label: value.name, value: value.id})) ?? [], 
+  [data]);
+
+  if (!canSeeFilters) {
+    return (
+      <section className="mn-filter-container">
+        <div className="mn-filter__search">
+          {children}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="mn-filter-container">
       <div className="mn-filter__search">
@@ -37,7 +55,7 @@ export default function MoviesFilter(
       <div className="mn-filter__item">
         <MoviesFilterSelect 
           name="genre"
-          options={[]}
+          options={genreOptions}
           value={genre}
           onValueChange={onGenreChange}
         />

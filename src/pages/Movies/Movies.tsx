@@ -74,6 +74,7 @@ export default function Movies() {
     <section className="mn-movies-container">
       <h4 style={{marginBottom: '1rem'}}>Find something to watch tonight.</h4>
       <MoviesFilter
+        canSeeFilters={!Boolean(searchFilters.query)}
         year={discoverFilters.primary_release_year}
         rating={discoverFilters["vote_average.gte"]}
         sort={discoverFilters.sort_by}

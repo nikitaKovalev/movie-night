@@ -25,7 +25,7 @@ export default function Pagination(
 
       <div className="mn-pagination__current">
         <span className="mn-pagination__label">Page</span>
-        <span className="mn-pagination__page">{page}</span>
+        <span className="mn-pagination__page">{page} / {total_pages}</span>
       </div>
 
       <button
