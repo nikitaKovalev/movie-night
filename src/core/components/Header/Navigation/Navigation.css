@@ -44,3 +44,8 @@
   color: #fff;
   background: #262626;
 }
+
+.mn-navigation__link--active {
+  color: #fff;
+  background: #262626;
+}

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import "./Navigation.css";
 
 export default function MNavigation() {
@@ -9,9 +9,13 @@ export default function MNavigation() {
 
   const linkRefs = links.map(link => {
     return (
-      <Link to={link.path} key={link.path} className="mn-navigation__link">
+      <NavLink 
+        to={link.path} 
+        key={link.path} 
+        className={({isActive}) => `mn-navigation__link ${isActive ? "mn-navigation__link--active" : ""}`}
+      >
         {link.label}{link.placeholder}
-      </Link>
+      </NavLink>
     );
   })
 

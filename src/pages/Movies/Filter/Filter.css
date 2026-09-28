@@ -1,0 +1,68 @@
+.mn-filter-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 16px;
+
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+}
+
+/* Select wrapper */
+
+.mn-filter__item {
+  flex-shrink: 0;
+}
+
+.mn-filter__select {
+  height: 40px;
+  min-width: 130px;
+
+  padding: 0 34px 0 12px;
+
+  background-color: #111;
+  border: 1px solid #303030;
+  border-radius: 6px;
+
+  color: #d4d4d8;
+  font-size: 14px;
+
+  outline: none;
+  cursor: pointer;
+
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.mn-filter__select:hover {
+  background-color: #161616;
+  border-color: #404040;
+}
+
+.mn-filter__select:focus {
+  border-color: #626262;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .mn-filter-container {
+    flex-wrap: wrap;
+  }
+
+  .mn-filter__search {
+    flex-basis: 100%;
+  }
+
+  .mn-filter__item {
+    flex: 1;
+  }
+
+  .mn-filter__select {
+    width: 100%;
+  }
+}

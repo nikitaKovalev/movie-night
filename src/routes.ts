@@ -20,13 +20,13 @@ export const routes = createBrowserRouter([
           }
         ],
       },
+      {
+        path: 'watchlist',
+        lazy: async () => {
+          const {Watchlist} = await import("./pages/Watchlist/Watchlist");
+          return {Component: Watchlist};
+        }
+      }
     ]
   },
-  {
-    path: 'watchlist',
-    lazy: async () => {
-      const {Watchlist} = await import("./pages/Watchlist/Watchlist");
-      return {Component: Watchlist};
-    }
-  }
 ]);
