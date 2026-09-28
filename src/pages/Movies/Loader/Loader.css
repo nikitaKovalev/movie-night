@@ -1,0 +1,33 @@
+.mn-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  min-height: 320px;
+  padding: 40px 24px;
+}
+
+.mn-loader__spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  border-top-color: #f1f1f3;
+  border-radius: 50%;
+
+  animation: mn-loader-spin 0.8s linear infinite;
+}
+
+.mn-loader__text {
+  color: #777784;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes mn-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

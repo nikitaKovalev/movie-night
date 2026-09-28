@@ -1,0 +1,45 @@
+.mn-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 320px;
+  padding: 40px 24px;
+
+  text-align: center;
+}
+
+.mn-empty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+  margin-bottom: 18px;
+
+  color: #777784;
+  font-size: 26px;
+
+  background: #18181f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.mn-empty__title {
+  margin: 0 0 8px;
+
+  color: #f1f1f3;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.mn-empty__message {
+  max-width: 380px;
+  margin: 0;
+
+  color: #7f7f8c;
+  font-size: 14px;
+  line-height: 1.6;
+}

@@ -4,17 +4,56 @@ import MoviesSearch from "./Seacrh/Search";
 import { useDebounce } from "../../core/hooks/useDebounce";
 import { DEBOUNCE_TIME } from "../../core/constants/debounce-time";
 import useMoviesSearchUrlParams from "./hooks/useMoviesSearchUrlParams";
+import MoviesList from "./List/List";
+import useMoviesDiscoverUrlParams from "./hooks/useMoviesDiscoverUrlParams";
 import useMovies from "./hooks/useMovies";
+import MoviesCard from "./Card/Card";
+import MoviesLoader from "./Loader/Loader";
+import MoviesError from "./Error/Error";
+import MoviesEmpty from "./Empty/Empty";
 
 export default function Movies() {
-  const {filters, queryChange, pageChange} = useMoviesSearchUrlParams();
-  const [search, setSearch] = useState(filters.query);
+  const {
+    filters: searchFilters, 
+    queryChange, 
+    pageChange: searchPageChange,
+  } = useMoviesSearchUrlParams();
+  const {
+    filters: discoverFilters, 
+    pageChange: discoverPageChange,
+    yearChange,
+    ratingChange,
+    sortChange,
+  } = useMoviesDiscoverUrlParams();
+  const [search, setSearch] = useState(searchFilters.query);
   const debounceSearch = useDebounce({value: search, delay: DEBOUNCE_TIME});
 
-  useEffect(() => setSearch(filters.query), [filters.query]);
+  useEffect(() => setSearch(searchFilters.query), [searchFilters.query]);
   useEffect(() => queryChange(debounceSearch), [debounceSearch]);
 
-  const {data} = useMovies(filters);
+  const {data, isLoading, isError} = useMovies(searchFilters, discoverFilters);
+  const content = (loading: boolean, error: boolean) => {
+    if (loading) {
+      return <MoviesLoader/>;
+    }
+
+    if (error) {
+      return <MoviesError/>;
+    }
+
+    if (!data?.results.length) {
+      return <MoviesEmpty/>;
+    }
+
+    return (
+      <MoviesList>
+        {data?.results.map(movie => 
+          <MoviesCard key={movie.id} movie={movie}/>
+        )}
+      </MoviesList>
+    );
+  }
+
  
   return (
     <section className="mn-movies-container">
@@ -25,6 +64,8 @@ export default function Movies() {
           onSearchChange={setSearch} 
         />
       </MoviesFilter>
+
+      {content(isLoading, isError)}
     </section>
   );
 }
