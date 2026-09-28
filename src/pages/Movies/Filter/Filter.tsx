@@ -1,7 +1,33 @@
 import { type ReactNode } from "react";
 import "./Filter.css";
+import MoviesFilterSelect from "./FilterSelect/FilterSelect";
+import { RATING_OPTIONS, SORT_OPTIONS, YEARS_OPTIONS } from "./filters";
 
-export default function MoviesFilter({children}: {children: ReactNode}) {
+interface MoviesFilterProps {
+  children: ReactNode;
+  year: number;
+  rating: number;
+  sort: string;
+  genre: string;
+  onYearChange: (year: number) => void;
+  onRatingChange: (rating: number) => void;
+  onSortChange: (sort: string) => void;
+  onGenreChange: (sort: string) => void;
+}
+
+export default function MoviesFilter(
+  {
+    children, 
+    onRatingChange, 
+    onSortChange, 
+    onYearChange, 
+    onGenreChange,
+    year,
+    rating,
+    genre,
+    sort,
+  }: MoviesFilterProps,
+) {
   return (
     <section className="mn-filter-container">
       <div className="mn-filter__search">
@@ -9,28 +35,39 @@ export default function MoviesFilter({children}: {children: ReactNode}) {
       </div>
 
       <div className="mn-filter__item">
-        <select name="genre" id="genre" className="mn-filter__select">
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
+        <MoviesFilterSelect 
+          name="genre"
+          options={[]}
+          value={genre}
+          onValueChange={onGenreChange}
+        />
       </div>
 
       <div className="mn-filter__item">
-        <select name="year" id="year" className="mn-filter__select">
-          <option value="1">1</option>
-        </select>
+        <MoviesFilterSelect 
+          name="year" 
+          options={YEARS_OPTIONS}
+          value={year}
+          onValueChange={onYearChange}
+        />
       </div>
 
       <div className="mn-filter__item">
-        <select name="rating" id="rating" className="mn-filter__select">
-          <option value="1">1</option>
-        </select>
+        <MoviesFilterSelect 
+          name="rating" 
+          options={RATING_OPTIONS}
+          value={rating}
+          onValueChange={onRatingChange}
+        />
       </div>
 
       <div className="mn-filter__item">
-        <select name="sort" id="sort" className="mn-filter__select">
-          <option value="1">1</option>
-        </select>
+        <MoviesFilterSelect 
+          name="sort" 
+          options={SORT_OPTIONS}
+          value={sort}
+          onValueChange={onSortChange}
+        />
       </div>
     </section>
   );

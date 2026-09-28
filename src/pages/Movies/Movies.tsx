@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import MoviesFilter from "./Filter/Filter";
 import MoviesSearch from "./Seacrh/Search";
 import { useDebounce } from "../../core/hooks/useDebounce";
@@ -26,6 +26,7 @@ export default function Movies() {
     yearChange,
     ratingChange,
     sortChange,
+    genreChange,
   } = useMoviesDiscoverUrlParams();
 
   const [search, setSearch] = useState(searchFilters.query);
@@ -37,12 +38,12 @@ export default function Movies() {
 
   const {data, isLoading, isError} = useMovies(searchFilters, discoverFilters);
   
-  const content = (loading: boolean, error: boolean) => {
-    if (loading) {
+  const content = useMemo(() => {
+    if (isLoading) {
       return <MoviesLoader/>;
     }
 
-    if (error) {
+    if (isError) {
       return <MoviesError/>;
     }
 
@@ -66,20 +67,29 @@ export default function Movies() {
         )}
       </MoviesList>
     );
-  }
+  }, [data, isLoading, isError])
 
  
   return (
     <section className="mn-movies-container">
-      <h4>Find something to watch tonight.</h4>
-      <MoviesFilter>
+      <h4 style={{marginBottom: '1rem'}}>Find something to watch tonight.</h4>
+      <MoviesFilter
+        year={discoverFilters.primary_release_year}
+        rating={discoverFilters["vote_average.gte"]}
+        sort={discoverFilters.sort_by}
+        genre={discoverFilters.with_genres}
+        onYearChange={yearChange}
+        onRatingChange={ratingChange}
+        onSortChange={sortChange}
+        onGenreChange={genreChange}
+      >
         <MoviesSearch 
           search={search} 
           onSearchChange={setSearch} 
         />
       </MoviesFilter>
 
-      {content(isLoading, isError)}
+      {content}
     </section>
   );
 }
