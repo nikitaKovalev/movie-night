@@ -10,15 +10,13 @@ export const routes = createBrowserRouter([
       {
         path: '/movies',
         Component: Movies,
-        children: [
-          {
-            path: '/movies/:movieid',
-            lazy: async () => {
-              const {Movie} = await import("./pages/Movie/Movie");
-              return {Component: Movie};
-            },
-          }
-        ],
+      },
+      {
+        path: '/movies/:movieid',
+        lazy: async () => {
+          const {Movie} = await import("./pages/Movie/Movie");
+          return {Component: Movie};
+        },
       },
       {
         path: 'watchlist',
