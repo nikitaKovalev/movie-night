@@ -1,0 +1,463 @@
+/* ========================================
+   PAGE
+   ======================================== */
+
+   .mn-details {
+    width: 100%;
+    min-height: 100vh;
+  
+    color: #f5f5f7;
+  }
+  
+  
+  /* ========================================
+     HERO
+     ======================================== */
+  
+  .mn-details__hero {
+    position: relative;
+  
+    min-height: 570px;
+  
+    overflow: hidden;
+  
+    background: #101015;
+  }
+  
+  .mn-details__backdrop {
+    position: absolute;
+    inset: 0;
+  
+    width: 100%;
+    height: 100%;
+  
+    object-fit: cover;
+    object-position: center 25%;
+  }
+  
+  
+  /* Dark gradient over backdrop */
+  
+  .mn-details__overlay {
+    position: absolute;
+    inset: 0;
+  
+    background:
+      linear-gradient(
+        to right,
+        rgba(10, 10, 14, 0.96) 0%,
+        rgba(10, 10, 14, 0.82) 38%,
+        rgba(10, 10, 14, 0.45) 70%,
+        rgba(10, 10, 14, 0.55) 100%
+      ),
+      linear-gradient(
+        to top,
+        #101015 0%,
+        transparent 45%
+      );
+  }
+  
+  
+  /* ========================================
+     HERO CONTENT
+     ======================================== */
+  
+  .mn-details__hero-content {
+    position: relative;
+    z-index: 1;
+  
+    display: flex;
+    align-items: flex-end;
+    gap: 42px;
+  
+    width: min(1200px, calc(100% - 48px));
+    min-height: 570px;
+  
+    margin: 0 auto;
+    padding: 70px 0 55px;
+  }
+  
+  
+  /* ========================================
+     POSTER
+     ======================================== */
+  
+  .mn-details__poster-wrapper {
+    flex: 0 0 250px;
+  }
+  
+  .mn-details__poster {
+    display: block;
+  
+    width: 100%;
+    aspect-ratio: 2 / 3;
+  
+    object-fit: cover;
+  
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  /* ========================================
+     MOVIE INFO
+     ======================================== */
+  
+  .mn-details__info {
+    max-width: 700px;
+    padding-bottom: 10px;
+  }
+  
+  .mn-details__heading {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+  
+    margin-bottom: 12px;
+  }
+  
+  .mn-details__title {
+    margin: 0;
+  
+    color: #ffffff;
+  
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 750;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+  }
+  
+  .mn-details__year {
+    color: #9a9aa5;
+  
+    font-size: 22px;
+    font-weight: 400;
+  }
+  
+  
+  /* ========================================
+     META
+     ======================================== */
+  
+  .mn-details__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+  
+    margin-bottom: 20px;
+  
+    color: #a1a1ab;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .mn-details__dot {
+    width: 4px;
+    height: 4px;
+  
+    background: #696974;
+    border-radius: 50%;
+  }
+  
+  
+  /* ========================================
+     GENRES
+     ======================================== */
+  
+  .mn-details__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  
+    margin-bottom: 28px;
+  }
+  
+  .mn-details__genre {
+    padding: 7px 12px;
+  
+    color: #c8c8cf;
+    font-size: 13px;
+    font-weight: 500;
+  
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(8px);
+  
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+  }
+  
+  
+  /* ========================================
+     ACTIONS
+     ======================================== */
+  
+  .mn-details__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  
+  /* Rating */
+  
+  .mn-details__rating {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  
+    color: #85858f;
+    font-size: 13px;
+  }
+  
+  .mn-details__rating-star {
+    margin-right: 3px;
+  
+    color: #f5c451;
+    font-size: 23px;
+  }
+  
+  .mn-details__rating strong {
+    color: #ffffff;
+  
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  
+  /* Watchlist */
+  
+  .mn-details__watchlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+  
+    height: 44px;
+    padding: 0 18px;
+  
+    color: #f5f5f7;
+  
+    font-size: 14px;
+    font-weight: 600;
+  
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(10px);
+  
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 9px;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  .mn-details__watchlist:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.22);
+  
+    transform: translateY(-1px);
+  }
+  
+  .mn-details__watchlist:active {
+    transform: translateY(0);
+  }
+  
+  
+  /* ========================================
+     BODY
+     ======================================== */
+  
+  .mn-details__body {
+    width: min(1200px, calc(100% - 48px));
+  
+    margin: 0 auto;
+    padding: 30px 0 80px;
+  }
+  
+  
+  /* ========================================
+     OVERVIEW
+     ======================================== */
+  
+  .mn-details__overview {
+    max-width: 800px;
+  
+    margin-bottom: 42px;
+  }
+  
+  .mn-details__section-title {
+    margin: 0 0 14px;
+  
+    color: #f5f5f7;
+  
+    font-size: 22px;
+    font-weight: 650;
+    letter-spacing: -0.3px;
+  }
+  
+  .mn-details__description {
+    margin: 0;
+  
+    color: #a0a0aa;
+  
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  
+  
+  /* ========================================
+     FACTS
+     ======================================== */
+  
+  .mn-details__facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  
+    padding-top: 28px;
+  
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  
+  .mn-details__fact {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  
+  .mn-details__fact-label {
+    color: #6f6f7a;
+  
+    font-size: 12px;
+    font-weight: 600;
+  
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+  }
+  
+  .mn-details__fact-value {
+    color: #d4d4da;
+  
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  
+  /* ========================================
+     RESPONSIVE
+     ======================================== */
+  
+  @media (max-width: 900px) {
+    .mn-details__hero-content {
+      gap: 30px;
+    }
+  
+    .mn-details__poster-wrapper {
+      flex-basis: 210px;
+    }
+  
+    .mn-details__facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  
+  @media (max-width: 650px) {
+    .mn-details__hero {
+      min-height: auto;
+    }
+  
+    .mn-details__backdrop {
+      height: 320px;
+    }
+  
+    .mn-details__overlay {
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(10, 10, 14, 0.25) 0%,
+          #101015 300px
+        );
+    }
+  
+    .mn-details__hero-content {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 24px;
+  
+      width: calc(100% - 32px);
+      min-height: auto;
+  
+      padding: 190px 0 20px;
+    }
+  
+    .mn-details__poster-wrapper {
+      flex: none;
+  
+      width: 150px;
+    }
+  
+    .mn-details__info {
+      padding: 0;
+    }
+  
+    .mn-details__title {
+      font-size: 32px;
+      letter-spacing: -0.7px;
+    }
+  
+    .mn-details__year {
+      font-size: 18px;
+    }
+  
+    .mn-details__body {
+      width: calc(100% - 32px);
+  
+      padding-top: 24px;
+    }
+  
+    .mn-details__facts {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 16px;
+    }
+  }
+  
+  
+  @media (max-width: 420px) {
+    .mn-details__facts {
+      grid-template-columns: 1fr;
+    }
+  
+    .mn-details__watchlist {
+      width: 100%;
+    }
+  }
+
+  .mn-details__watchlist--active {
+    color: #ff6b81;
+  
+    background: rgba(255, 107, 129, 0.14);
+    border-color: rgba(255, 107, 129, 0.35);
+  }
+  
+  .mn-details__watchlist--active:hover {
+    color: #ff8294;
+  
+    background: rgba(255, 107, 129, 0.2);
+    border-color: rgba(255, 107, 129, 0.5);
+  
+    transform: translateY(-1px);
+  }
+  
+  .mn-details__watchlist--active:active {
+    transform: translateY(0);
+  }
