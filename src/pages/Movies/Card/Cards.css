@@ -150,3 +150,61 @@
     font-size: 12px;
   }
 }
+
+.mn-movie-card__watchlist {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  color: #ffffff;
+  font-size: 21px;
+  line-height: 1;
+
+  background: rgba(10, 10, 14, 0.78);
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.mn-movie-card__watchlist:hover {
+  color: #ff6b81;
+
+  background: rgba(20, 20, 26, 0.92);
+  border-color: rgba(255, 107, 129, 0.4);
+
+  transform: scale(1.08);
+}
+
+.mn-movie-card__watchlist:active {
+  transform: scale(0.95);
+}
+
+.mn-movie-card__watchlist:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.mn-movie-card__watchlist--active {
+  color: #ff6b81;
+
+  background: rgba(255, 107, 129, 0.15);
+  border-color: rgba(255, 107, 129, 0.35);
+}
