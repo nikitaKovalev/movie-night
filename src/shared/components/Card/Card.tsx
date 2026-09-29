@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { TMDB_IMAGE_POSTER_BASE_URL } from "../../../core/constants/base-url";
-import type { MovieShort } from "../models/movies";
 import "./Cards.css";
 import { useWatchlistContext } from "../../../core/hooks/watchlist/WatchlistContext";
+import type { MovieShort } from "../../models/movies";
 
 export default function MoviesCard({movie}: {movie: MovieShort}) {
   const [movies, toggleMovies] = useWatchlistContext();

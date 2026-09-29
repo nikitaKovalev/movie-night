@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { MovieShort } from "../../../pages/Movies/models/movies";
+import type { MovieShort } from "../../../shared/models/movies";
 
 export const WatchlistContext = createContext<MovieShort[]>([]);
 export const WatchlistDispatchContext = createContext<(movie: MovieShort) => void>(() => {});

@@ -4,14 +4,14 @@ import MoviesSearch from "./Seacrh/Search";
 import { useDebounce } from "../../core/hooks/useDebounce";
 import { DEBOUNCE_TIME } from "../../core/constants/debounce-time";
 import useMoviesSearchUrlParams from "./hooks/useMoviesSearchUrlParams";
-import MoviesList from "./List/List";
 import useMoviesDiscoverUrlParams from "./hooks/useMoviesDiscoverUrlParams";
 import useMovies from "./hooks/useMovies";
-import MoviesCard from "./Card/Card";
-import MoviesLoader from "./Loader/Loader";
-import MoviesError from "./Error/Error";
-import MoviesEmpty from "./Empty/Empty";
 import Pagination from "../../core/components/Pagination/Pagination";
+import MoviesCard from "../../shared/components/Card/Card";
+import MoviesEmpty from "../../shared/components/Empty/Empty";
+import MoviesError from "../../shared/components/Error/Error";
+import MoviesList from "../../shared/components/List/List";
+import MoviesLoader from "../../shared/components/Loader/Loader";
 
 export default function Movies() {
   const {
